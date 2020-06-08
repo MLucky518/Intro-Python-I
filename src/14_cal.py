@@ -32,22 +32,20 @@ import calendar
 from datetime import datetime
 
 
-def calendar_func(date):
-    new_date = date.split(' 5')
-    print(date)
+def calendar_func(month,year):
+    
 
     current_month = datetime.now().month
     current_year = datetime.now().year
 
-    if date == "":
+    if (year and month)== "" :
         print(calendar.TextCalendar().formatmonth(current_year, current_month))
 
-    elif len(date) == 1:
-        print(calendar.TextCalendar().formatmonth(current_year, int(date[0])))
+    elif year == "" :
+        print(calendar.TextCalendar().formatmonth(current_year, month))
 
     else:
-        print(calendar.TextCalendar().formatmonth(int(date[1]), int(date[0])))
+        print(calendar.TextCalendar().formatmonth(year, month))
 
 
-i = input("Type desired month and year")
-calendar_func(i)
+calendar_func(int(sys.argv[1]),int(sys.argv[2]))
